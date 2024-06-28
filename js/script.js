@@ -1,13 +1,14 @@
 alert('¿Preparado para organizar tu viaje?')
 const mensajePrincipal = 'Ingresa una opción \n 1.-Organizar Viaje \n 2.-Obtener Resumen y Costos \n 3.-Eliminar Item \n 4.-Salir' 
 const mensajeOrganizacion = 'Ingresa una opción \n 1.-Ingresar Transporte \n 2.-Ingresar Hospedaje \n 3.-Ingresar restaurant \n 4.-Volver al Menú Principal'
-const mensajeEliminacion = 'Ingresa una opción \n 1.-Eliminar un Viaje \n 2.-Eliminar un Hospedaje \n 3.-Eliminar un Resturant \n 4.-Salir' 
+const mensajeEliminacion = 'Ingresa una opción \n 1.-Eliminar un Transporte \n 2.-Eliminar un Hospedaje \n 3.-Eliminar un Resturant \n 4.-Salir' 
 const listaTransporte = []
 const listaHospedaje = []
 const listaRestaurant = []
 let opcionPrincipal = parseInt(prompt(mensajePrincipal))
 
 
+//menu para agregar un transporte hospedaje o Restaurant
 const menuOrganizacion = () => {
     let opcionOrganizacion = parseInt(prompt(mensajeOrganizacion))
 
@@ -32,6 +33,8 @@ const menuOrganizacion = () => {
     }
 }
 
+
+//agrega un Transporte al final de la lista
 const agregaTransporte = () => {
 
     let tipoTransporte = parseInt(prompt('Ingresa una opcioón de transporte \n 1.-Avión \n 2.-Tren \n 3.-Barco \n 4.-Automovil \n 5.-Otro'))
@@ -88,7 +91,7 @@ const agregaTransporte = () => {
 
 
 
-
+//agrega un Hospedaje al final de la lista
 const agregaHospedaje = () => {
 
     let tipoHospedaje = parseInt(prompt('Ingresa una opcioón de transporte \n 1.-Hotel \n 2.-Hostal \n 3.-Otro'))
@@ -134,7 +137,7 @@ const agregaHospedaje = () => {
 
 }
 
-
+//agrega un restaurant al final de la lista
 const agregaRestaurant = () => {
 
     let nombre= prompt('Ingrese Nombre del lugar')
@@ -160,7 +163,7 @@ const agregaRestaurant = () => {
 
 }
 
-
+//muestra el resumen del viaje en alert y consola
 const resumenCostos = () =>{
 
     let valorTransporte = 0
@@ -220,6 +223,7 @@ const resumenCostos = () =>{
 
 }
 
+//Menu que pregunta que se desea eliminar
 const eliminacionItem = () =>{
 
     let opcionEliminar = parseInt(prompt(mensajeEliminacion))
@@ -228,13 +232,13 @@ const eliminacionItem = () =>{
 
         switch(opcionEliminar){
             case 1:
-                //eliminaTransporte()
+                eliminaTransporte()
                 break;
             case 2:
-                //eliminaHospedaje()
+                eliminaHospedaje()
                 break;
             case 3:
-                //eliminaRestaurant()
+                eliminaRestaurant()
                 break;
             default:
                 alert('Opción no valida')
@@ -246,6 +250,99 @@ const eliminacionItem = () =>{
 
 }
 
+//Muetra por prompt el listado de Transportes y si se ingresa un valor valido lo quitara
+const eliminaTransporte = () =>{
+
+    if (listaTransporte.length != 0){
+        let valorTransporte = 0
+        let stringTransporte = 'Ingrese el id que desea eliminar \n id || tipo || agencia || valor || fechaIda || origen || destino \n'
+
+        for (let i =0 ; i<listaTransporte.length ; i++){
+            
+            valorTransporte = valorTransporte + parseInt(listaTransporte[i].valor)
+            stringTransporte = stringTransporte + (parseInt(i)) +
+                                ' || '+ listaTransporte[i].tipo +
+                                ' || '+ listaTransporte[i].agencia +
+                                ' || '+ listaTransporte[i].valor +
+                                ' || '+ listaTransporte[i].fechaIda +
+                                ' || '+ listaTransporte[i].origen +
+                                ' || '+ listaTransporte[i].destino + '\n'
+
+        }
+
+        //alert('Resumen Transportes \n' + stringTransporte )
+        let eliminar = parseInt(prompt(stringTransporte))
+
+        listaTransporte.splice(eliminar,1)
+
+    }else{
+        alert('No se ha ingresado ningun Hospedaje')
+    }
+
+}
+
+
+
+//Muetra por prompt el listado de Restaurants y si se ingresa un valor valido lo quitara
+const eliminaRestaurant = () =>{
+
+    if (listaRestaurant.length != 0){
+        let valorRestaurants = 0
+        let stringRestaurants = 'Ingrese el id que desea eliminar \n id || nombre || fecha || direccion || valor \n'
+
+        for (let i =0 ; i<listaRestaurant.length ; i++){
+        
+            valorRestaurants = valorRestaurants + parseInt(listaRestaurant[i].valor)
+            stringRestaurants = stringRestaurants + (parseInt(i)) +
+                                ' || '+ listaRestaurant[i].nombre +
+                                ' || '+ listaRestaurant[i].fecha +
+                                ' || '+ listaRestaurant[i].direccion +
+                                ' || '+ listaRestaurant[i].valor + '\n'
+    
+        }
+
+        //alert('Resumen Transportes \n' + stringTransporte )
+        let eliminar = parseInt(prompt(stringRestaurants))
+
+        listaRestaurant.splice(eliminar,1)
+
+    }else{
+        alert('No se ha ingresado ningun Restaurant')
+    }
+
+}
+
+
+
+//Muetra por prompt el listado de hospedajes y si se ingresa un valor valido lo quitara
+const eliminaHospedaje = () =>{
+
+    if (listaHospedaje.length != 0){
+        let valorHospedaje = 0
+        let stringHospedaje = 'Ingrese el id que desea eliminar \n id || tipo || nombre || entrada || salida || valor \n'
+
+        for (let i =0 ; i<listaHospedaje.length ; i++){
+        
+            valorHospedaje = valorHospedaje + parseInt(listaHospedaje[i].valor)
+            stringHospedaje = stringHospedaje + (parseInt(i)) +
+                                ' || '+ listaHospedaje[i].tipo +
+                                ' || '+ listaHospedaje[i].nombre +
+                                ' || '+ listaHospedaje[i].entrada +
+                                ' || '+ listaHospedaje[i].salida +
+                                ' || '+ listaHospedaje[i].valor + '\n'
+    
+        }
+
+        //alert('Resumen Transportes \n' + stringTransporte )
+        let eliminar = parseInt(prompt(stringHospedaje))
+
+        listaHospedaje.splice(eliminar,1)
+
+    }else{
+        alert('No se ha ingresado ningun transporte')
+    }
+
+}
 
 
 
@@ -253,6 +350,8 @@ const eliminacionItem = () =>{
 
 
 
+
+//menu principal
 while (opcionPrincipal !=4){
 
     switch(opcionPrincipal){
@@ -264,7 +363,7 @@ while (opcionPrincipal !=4){
             resumenCostos()
             break;
         case 3:
-            alert('Se llamara a opcion de eliminacion')
+            eliminacionItem()
             break;
         default:
             alert('Opción no valida')
