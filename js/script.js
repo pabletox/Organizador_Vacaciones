@@ -59,8 +59,20 @@ const agregaTransporte = () => {
                 break;
         }
 
-        let agencia= prompt('Ingrese Agencia')
-        let valor= prompt('Ingrese Valor')
+        let agencia
+        let valor
+        if (transporteString == 'Automovil'){
+
+            agencia= 'Particular'
+            valor= prompt('Ingrese Valor Aprox gastos (bencina, peajes, etc)')
+
+        }else {
+
+            agencia= prompt('Ingrese Agencia')
+            valor= prompt('Ingrese Valor de pasaje')
+
+        }
+        
         let fechaIda= prompt('Ingrese Fecha de Ida')
         let origen= prompt('Ingrese Origen')
         let destino= prompt('Ingrese Destino')
