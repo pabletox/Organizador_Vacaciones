@@ -387,7 +387,7 @@ while (opcionPrincipal !=4){
             menuOrganizacion()
             break;
         case 2:
-            alert('Su Resumen aparecera en la consola')
+            alert('Su Resumen aparecera en la siguiente ventana y tambien en la consola')
             resumenCostos()
             break;
         case 3:
