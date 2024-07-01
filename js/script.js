@@ -64,6 +64,7 @@ const agregaTransporte = () => {
         let fechaIda= prompt('Ingrese Fecha de Ida')
         let origen= prompt('Ingrese Origen')
         let destino= prompt('Ingrese Destino')
+        let Horario= prompt('Ingrese Horario')
 
         if (agencia!='' && valor!='' && fechaIda!='' && origen!='' && destino!=''){
             const transporte = {
@@ -72,7 +73,8 @@ const agregaTransporte = () => {
                 valor: valor,
                 fechaIda: fechaIda,
                 origen: origen,
-                destino: destino
+                destino: destino,
+                horario: Horario
             }
 
             listaTransporte.push(transporte)
@@ -114,6 +116,8 @@ const agregaHospedaje = () => {
         let entrada= prompt('Ingrese Fecha de Ingreso')
         let salida= prompt('Ingrese Fecha de Salida')
         let valor= prompt('Ingrese Valor')
+        let direccion= prompt('Ingrese dirección')
+        let ciudad= prompt('Ingrese ciudad')
 
         if (nombre!='' && entrada!='' && salida!='' && valor!=''){
             const hospedaje = {
@@ -121,7 +125,9 @@ const agregaHospedaje = () => {
                 nombre: nombre,
                 entrada: entrada,
                 salida: salida,
-                valor: valor
+                valor: valor,
+                direccion: direccion,
+                ciudad: ciudad
             }
 
             listaHospedaje.push(hospedaje)
@@ -143,6 +149,7 @@ const agregaRestaurant = () => {
     let nombre= prompt('Ingrese Nombre del lugar')
     let fecha= prompt('Ingrese Fecha Reserva')
     let direccion= prompt('Ingrese Dirección')
+    let ciudad= prompt('Ingrese ciudad')
     let valor= prompt('Ingrese Valor')
     if ( nombre!= '' && fecha!= '' && direccion!= '' && valor!= '' ){
 
@@ -150,7 +157,8 @@ const agregaRestaurant = () => {
             nombre: nombre,
             fecha: fecha,
             direccion: direccion,
-            valor: valor
+            valor: valor,
+            ciudad: ciudad
         }
 
         listaRestaurant.push(restaurant)
@@ -167,11 +175,11 @@ const agregaRestaurant = () => {
 const resumenCostos = () =>{
 
     let valorTransporte = 0
-    let stringTransporte = 'id || tipo || agencia || valor || fechaIda || origen || destino \n'
+    let stringTransporte = 'id || tipo || agencia || valor || fechaIda || Horario || origen || destino \n'
     let valorHospedaje = 0
-    let stringHospedaje = 'id || tipo || nombre || entrada || salida || valor \n'
+    let stringHospedaje = 'id || tipo || nombre || Dirección || Ciudad || entrada || salida || valor \n'
     let valorRestaurants = 0
-    let stringRestaurants = 'id || nombre || fecha || direccion || valor \n'
+    let stringRestaurants = 'id || nombre || fecha || direccion || ciudad || valor \n'
     let valorTotal = 0
 
     for (let i =0 ; i<listaTransporte.length ; i++){
@@ -182,6 +190,7 @@ const resumenCostos = () =>{
                             ' || '+ listaTransporte[i].agencia +
                             ' || '+ listaTransporte[i].valor +
                             ' || '+ listaTransporte[i].fechaIda +
+                            ' || '+ listaTransporte[i].horario +
                             ' || '+ listaTransporte[i].origen +
                             ' || '+ listaTransporte[i].destino + '\n'
 
@@ -193,6 +202,8 @@ const resumenCostos = () =>{
         stringHospedaje = stringHospedaje + (parseInt(i)+1) +
                             ' || '+ listaHospedaje[i].tipo +
                             ' || '+ listaHospedaje[i].nombre +
+                            ' || '+ listaHospedaje[i].direccion +
+                            ' || '+ listaHospedaje[i].ciudad +
                             ' || '+ listaHospedaje[i].entrada +
                             ' || '+ listaHospedaje[i].salida +
                             ' || '+ listaHospedaje[i].valor + '\n'
@@ -206,6 +217,7 @@ const resumenCostos = () =>{
                             ' || '+ listaRestaurant[i].nombre +
                             ' || '+ listaRestaurant[i].fecha +
                             ' || '+ listaRestaurant[i].direccion +
+                            ' || '+ listaRestaurant[i].ciudad +
                             ' || '+ listaRestaurant[i].valor + '\n'
 
     }
@@ -255,7 +267,7 @@ const eliminaTransporte = () =>{
 
     if (listaTransporte.length != 0){
         let valorTransporte = 0
-        let stringTransporte = 'Ingrese el id que desea eliminar \n id || tipo || agencia || valor || fechaIda || origen || destino \n'
+        let stringTransporte = 'Ingrese el id que desea eliminar \n id || tipo || agencia || valor || fechaIda || Horario || origen || destino \n'
 
         for (let i =0 ; i<listaTransporte.length ; i++){
             
@@ -265,6 +277,7 @@ const eliminaTransporte = () =>{
                                 ' || '+ listaTransporte[i].agencia +
                                 ' || '+ listaTransporte[i].valor +
                                 ' || '+ listaTransporte[i].fechaIda +
+                                ' || '+ listaTransporte[i].horario +
                                 ' || '+ listaTransporte[i].origen +
                                 ' || '+ listaTransporte[i].destino + '\n'
 
@@ -288,7 +301,7 @@ const eliminaRestaurant = () =>{
 
     if (listaRestaurant.length != 0){
         let valorRestaurants = 0
-        let stringRestaurants = 'Ingrese el id que desea eliminar \n id || nombre || fecha || direccion || valor \n'
+        let stringRestaurants = 'Ingrese el id que desea eliminar \n id || nombre || fecha || direccion || ciudad || valor \n'
 
         for (let i =0 ; i<listaRestaurant.length ; i++){
         
@@ -297,6 +310,7 @@ const eliminaRestaurant = () =>{
                                 ' || '+ listaRestaurant[i].nombre +
                                 ' || '+ listaRestaurant[i].fecha +
                                 ' || '+ listaRestaurant[i].direccion +
+                                ' || '+ listaRestaurant[i].ciudad +
                                 ' || '+ listaRestaurant[i].valor + '\n'
     
         }
@@ -319,7 +333,7 @@ const eliminaHospedaje = () =>{
 
     if (listaHospedaje.length != 0){
         let valorHospedaje = 0
-        let stringHospedaje = 'Ingrese el id que desea eliminar \n id || tipo || nombre || entrada || salida || valor \n'
+        let stringHospedaje = 'Ingrese el id que desea eliminar \n id || tipo || nombre || Dirección || Ciudad || entrada || salida || valor \n'
 
         for (let i =0 ; i<listaHospedaje.length ; i++){
         
@@ -327,6 +341,8 @@ const eliminaHospedaje = () =>{
             stringHospedaje = stringHospedaje + (parseInt(i)) +
                                 ' || '+ listaHospedaje[i].tipo +
                                 ' || '+ listaHospedaje[i].nombre +
+                                ' || '+ listaHospedaje[i].direccion +
+                                ' || '+ listaHospedaje[i].ciudad +
                                 ' || '+ listaHospedaje[i].entrada +
                                 ' || '+ listaHospedaje[i].salida +
                                 ' || '+ listaHospedaje[i].valor + '\n'
