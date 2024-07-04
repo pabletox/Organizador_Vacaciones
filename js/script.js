@@ -8,7 +8,7 @@ const listaRestaurant = []
 let opcionPrincipal = parseInt(prompt(mensajePrincipal))
 
 
-//menu para agregar un transporte hospedaje o Restaurant
+//menu para agregar un transporte hospedaje o Restaurantt
 const menuOrganizacion = () => {
     let opcionOrganizacion = parseInt(prompt(mensajeOrganizacion))
 
