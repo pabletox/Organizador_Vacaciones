@@ -2,10 +2,84 @@ alert('¿Preparado para organizar tu viaje?')
 const mensajePrincipal = 'Ingresa una opción \n 1.-Organizar Viaje \n 2.-Obtener Resumen y Costos \n 3.-Eliminar Item \n 4.-Salir' 
 const mensajeOrganizacion = 'Ingresa una opción \n 1.-Ingresar Transporte \n 2.-Ingresar Hospedaje \n 3.-Ingresar restaurant \n 4.-Volver al Menú Principal'
 const mensajeEliminacion = 'Ingresa una opción \n 1.-Eliminar un Transporte \n 2.-Eliminar un Hospedaje \n 3.-Eliminar un Resturant \n 4.-Salir' 
-const listaTransporte = []
-const listaHospedaje = []
-const listaRestaurant = []
 let opcionPrincipal = parseInt(prompt(mensajePrincipal))
+
+
+//Clase Trasporte
+class Trasporte {
+
+    static id = 0
+    
+    constructor (transporteString, agencia, valor, fechaIda, origen, destino, horario){
+        this.id         =   ++Trasporte.id
+        this.tipo       =   transporteString
+        this.agencia    =   agencia
+        this.valor      =   valor
+        this.fechaIda   =   fechaIda
+        this.origen     =   origen
+        this.destino    =   destino
+        this.horario    =   horario
+    }
+}
+
+//Clase Restaurant
+class Resturant {
+
+    static id = 0
+
+    constructor(nombre, fecha, direccion, valor, ciudad){
+
+        this.id         =   ++Resturant.id
+        this.nombre     =   nombre
+        this.fecha      =   fecha
+        this.direccion  =   direccion
+        this.valor      =   valor
+        this.ciudad     =   ciudad
+
+    }
+
+}
+
+//Clase Hospedaje
+class Hospedaje {
+
+    static id = 0
+
+    constructor(hospedajeString, nombre, entrada, salida, valor, direccion, ciudad){
+
+        this.id         =   ++Hospedaje.id
+        this.tipo       =   hospedajeString
+        this.nombre     =   nombre
+        this.entrada    =   entrada
+        this.salida     =   salida
+        this.valor      =   valor
+        this.direccion  =   direccion
+        this.ciudad     =   ciudad
+
+    }
+
+}
+
+//listas
+class Lista{
+
+    constructor(){
+        this.lista  =   []
+    }
+
+    agregarElemento(elemento){
+        this.lista.push(elemento)
+    }
+
+    eliminaElemento(numero){
+        this.lista.splice(numero,1)
+    }
+
+}
+
+const listaTransporte = new Lista()
+const listaHospedaje = new Lista()
+const listaRestaurant = new Lista()
 
 
 //menu para agregar un transporte hospedaje o Restaurantt
@@ -79,17 +153,10 @@ const agregaTransporte = () => {
         let Horario= prompt('Ingrese Horario')
 
         if (agencia!='' && valor!='' && fechaIda!='' && origen!='' && destino!=''){
-            const transporte = {
-                tipo: transporteString,
-                agencia: agencia,
-                valor: valor,
-                fechaIda: fechaIda,
-                origen: origen,
-                destino: destino,
-                horario: Horario
-            }
 
-            listaTransporte.push(transporte)
+            const transporte = new Trasporte(transporteString, agencia, valor, fechaIda, origen, destino, Horario)
+
+            listaTransporte.agregarElemento(transporte)
         }else {
 
             alert('Se ha ingresado un valor vacio, se redirigira al Menu principal')
@@ -132,17 +199,9 @@ const agregaHospedaje = () => {
         let ciudad= prompt('Ingrese ciudad')
 
         if (nombre!='' && entrada!='' && salida!='' && valor!=''){
-            const hospedaje = {
-                tipo: hospedajeString,
-                nombre: nombre,
-                entrada: entrada,
-                salida: salida,
-                valor: valor,
-                direccion: direccion,
-                ciudad: ciudad
-            }
 
-            listaHospedaje.push(hospedaje)
+            const hospedaje = new Hospedaje(hospedajeString, nombre, entrada, salida, valor, direccion, ciudad)
+            listaHospedaje.agregarElemento(hospedaje)
         }else {
 
             alert('Se ha ingresado un valor vacio, se redirigira al Menu principal')
@@ -165,15 +224,8 @@ const agregaRestaurant = () => {
     let valor= prompt('Ingrese Valor')
     if ( nombre!= '' && fecha!= '' && direccion!= '' && valor!= '' ){
 
-        const restaurant = {
-            nombre: nombre,
-            fecha: fecha,
-            direccion: direccion,
-            valor: valor,
-            ciudad: ciudad
-        }
-
-        listaRestaurant.push(restaurant)
+        const restaurant = new Resturant(nombre, fecha, direccion, valor, ciudad)
+        listaRestaurant.agregarElemento(restaurant)
 
     } else {
         alert('Se ha ingresado un valor vacio, se redirigira al Menu principal')
@@ -194,43 +246,44 @@ const resumenCostos = () =>{
     let stringRestaurants = 'id || nombre || fecha || direccion || ciudad || valor \n'
     let valorTotal = 0
 
-    for (let i =0 ; i<listaTransporte.length ; i++){
-        
-        valorTransporte = valorTransporte + parseInt(listaTransporte[i].valor)
-        stringTransporte = stringTransporte + (parseInt(i)+1) +
-                            ' || '+ listaTransporte[i].tipo +
-                            ' || '+ listaTransporte[i].agencia +
-                            ' || '+ listaTransporte[i].valor +
-                            ' || '+ listaTransporte[i].fechaIda +
-                            ' || '+ listaTransporte[i].horario +
-                            ' || '+ listaTransporte[i].origen +
-                            ' || '+ listaTransporte[i].destino + '\n'
+    for (const trasporte of listaTransporte.lista){
+
+        valorTransporte = valorTransporte + parseInt(trasporte.valor)
+        stringTransporte = stringTransporte + (parseInt(trasporte.id)) +
+                            ' || '+ trasporte.tipo +
+                            ' || '+ trasporte.agencia +
+                            ' || '+ trasporte.valor +
+                            ' || '+ trasporte.fechaIda +
+                            ' || '+ trasporte.horario +
+                            ' || '+ trasporte.origen +
+                            ' || '+ trasporte.destino + '\n'
+
+    }
+    
+
+    for (const hospedaje of listaHospedaje.lista){
+
+        valorHospedaje = valorHospedaje + parseInt(hospedaje.valor)
+        stringHospedaje = stringHospedaje + (parseInt(hospedaje.id)) +
+                            ' || '+ hospedaje.tipo +
+                            ' || '+ hospedaje.nombre +
+                            ' || '+ hospedaje.direccion +
+                            ' || '+ hospedaje.ciudad +
+                            ' || '+ hospedaje.entrada +
+                            ' || '+ hospedaje.salida +
+                            ' || '+ hospedaje.valor + '\n'
 
     }
 
-    for (let i =0 ; i<listaHospedaje.length ; i++){
-        
-        valorHospedaje = valorHospedaje + parseInt(listaHospedaje[i].valor)
-        stringHospedaje = stringHospedaje + (parseInt(i)+1) +
-                            ' || '+ listaHospedaje[i].tipo +
-                            ' || '+ listaHospedaje[i].nombre +
-                            ' || '+ listaHospedaje[i].direccion +
-                            ' || '+ listaHospedaje[i].ciudad +
-                            ' || '+ listaHospedaje[i].entrada +
-                            ' || '+ listaHospedaje[i].salida +
-                            ' || '+ listaHospedaje[i].valor + '\n'
+    for (const restaurant of listaRestaurant.lista){
 
-    }
-
-    for (let i =0 ; i<listaRestaurant.length ; i++){
-        
-        valorRestaurants = valorRestaurants + parseInt(listaRestaurant[i].valor)
-        stringRestaurants = stringRestaurants + (parseInt(i)+1) +
-                            ' || '+ listaRestaurant[i].nombre +
-                            ' || '+ listaRestaurant[i].fecha +
-                            ' || '+ listaRestaurant[i].direccion +
-                            ' || '+ listaRestaurant[i].ciudad +
-                            ' || '+ listaRestaurant[i].valor + '\n'
+        valorRestaurants = valorRestaurants + parseInt(restaurant.valor)
+        stringRestaurants = stringRestaurants + (parseInt(restaurant.id)) +
+                            ' || '+ restaurant.nombre +
+                            ' || '+ restaurant.fecha +
+                            ' || '+ restaurant.direccion +
+                            ' || '+ restaurant.ciudad +
+                            ' || '+ restaurant.valor + '\n'
 
     }
 
@@ -277,31 +330,31 @@ const eliminacionItem = () =>{
 //Muetra por prompt el listado de Transportes y si se ingresa un valor valido lo quitara
 const eliminaTransporte = () =>{
 
-    if (listaTransporte.length != 0){
+    if (listaTransporte.lista.length != 0){
         let valorTransporte = 0
         let stringTransporte = 'Ingrese el id que desea eliminar \n id || tipo || agencia || valor || fechaIda || Horario || origen || destino \n'
 
-        for (let i =0 ; i<listaTransporte.length ; i++){
-            
-            valorTransporte = valorTransporte + parseInt(listaTransporte[i].valor)
-            stringTransporte = stringTransporte + (parseInt(i)) +
-                                ' || '+ listaTransporte[i].tipo +
-                                ' || '+ listaTransporte[i].agencia +
-                                ' || '+ listaTransporte[i].valor +
-                                ' || '+ listaTransporte[i].fechaIda +
-                                ' || '+ listaTransporte[i].horario +
-                                ' || '+ listaTransporte[i].origen +
-                                ' || '+ listaTransporte[i].destino + '\n'
+        for (const trasporte of listaTransporte.lista){
 
+            valorTransporte = valorTransporte + parseInt(trasporte.valor)
+            stringTransporte = stringTransporte + (parseInt(trasporte.id)) +
+                                ' || '+ trasporte.tipo +
+                                ' || '+ trasporte.agencia +
+                                ' || '+ trasporte.valor +
+                                ' || '+ trasporte.fechaIda +
+                                ' || '+ trasporte.horario +
+                                ' || '+ trasporte.origen +
+                                ' || '+ trasporte.destino + '\n'
+    
         }
 
-        //alert('Resumen Transportes \n' + stringTransporte )
-        let eliminar = parseInt(prompt(stringTransporte))
 
-        listaTransporte.splice(eliminar,1)
+        let buscar = prompt(stringTransporte)
+        let eliminar = listaTransporte.lista.findIndex(transporte => transporte.id == buscar)
+        listaTransporte.eliminaElemento(eliminar)
 
     }else{
-        alert('No se ha ingresado ningun Hospedaje')
+        alert('No se ha ingresado ningun Transporte')
     }
 
 }
@@ -315,22 +368,22 @@ const eliminaRestaurant = () =>{
         let valorRestaurants = 0
         let stringRestaurants = 'Ingrese el id que desea eliminar \n id || nombre || fecha || direccion || ciudad || valor \n'
 
-        for (let i =0 ; i<listaRestaurant.length ; i++){
-        
-            valorRestaurants = valorRestaurants + parseInt(listaRestaurant[i].valor)
-            stringRestaurants = stringRestaurants + (parseInt(i)) +
-                                ' || '+ listaRestaurant[i].nombre +
-                                ' || '+ listaRestaurant[i].fecha +
-                                ' || '+ listaRestaurant[i].direccion +
-                                ' || '+ listaRestaurant[i].ciudad +
-                                ' || '+ listaRestaurant[i].valor + '\n'
+        for (const restaurant of listaRestaurant.lista){
+
+            valorRestaurants = valorRestaurants + parseInt(restaurant.valor)
+            stringRestaurants = stringRestaurants + (parseInt(restaurant.id)) +
+                                ' || '+ restaurant.nombre +
+                                ' || '+ restaurant.fecha +
+                                ' || '+ restaurant.direccion +
+                                ' || '+ restaurant.ciudad +
+                                ' || '+ restaurant.valor + '\n'
     
         }
 
-        //alert('Resumen Transportes \n' + stringTransporte )
-        let eliminar = parseInt(prompt(stringRestaurants))
 
-        listaRestaurant.splice(eliminar,1)
+        let buscar = prompt(stringRestaurants)
+        let eliminar = listaRestaurant.lista.findIndex(restaurant => restaurant.id == buscar)
+        listaRestaurant.eliminaElemento(eliminar)
 
     }else{
         alert('No se ha ingresado ningun Restaurant')
@@ -347,27 +400,27 @@ const eliminaHospedaje = () =>{
         let valorHospedaje = 0
         let stringHospedaje = 'Ingrese el id que desea eliminar \n id || tipo || nombre || Dirección || Ciudad || entrada || salida || valor \n'
 
-        for (let i =0 ; i<listaHospedaje.length ; i++){
-        
-            valorHospedaje = valorHospedaje + parseInt(listaHospedaje[i].valor)
-            stringHospedaje = stringHospedaje + (parseInt(i)) +
-                                ' || '+ listaHospedaje[i].tipo +
-                                ' || '+ listaHospedaje[i].nombre +
-                                ' || '+ listaHospedaje[i].direccion +
-                                ' || '+ listaHospedaje[i].ciudad +
-                                ' || '+ listaHospedaje[i].entrada +
-                                ' || '+ listaHospedaje[i].salida +
-                                ' || '+ listaHospedaje[i].valor + '\n'
+        for (const hospedaje of listaHospedaje.lista){
+
+            valorHospedaje = valorHospedaje + parseInt(hospedaje.valor)
+            stringHospedaje = stringHospedaje + (parseInt(hospedaje.id)) +
+                                ' || '+ hospedaje.tipo +
+                                ' || '+ hospedaje.nombre +
+                                ' || '+ hospedaje.direccion +
+                                ' || '+ hospedaje.ciudad +
+                                ' || '+ hospedaje.entrada +
+                                ' || '+ hospedaje.salida +
+                                ' || '+ hospedaje.valor + '\n'
     
         }
 
-        //alert('Resumen Transportes \n' + stringTransporte )
-        let eliminar = parseInt(prompt(stringHospedaje))
 
-        listaHospedaje.splice(eliminar,1)
+        let buscar = prompt(stringHospedaje)
+        let eliminar = listaHospedaje.lista.findIndex(hospedaje => hospedaje.id == buscar)
+        listaHospedaje.eliminaElemento(eliminar)
 
     }else{
-        alert('No se ha ingresado ningun transporte')
+        alert('No se ha ingresado ningun Hospedaje')
     }
 
 }
