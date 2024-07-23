@@ -1,10 +1,3 @@
-//alert('¿Preparado para organizar tu viaje?')
-const mensajePrincipal = 'Ingresa una opción \n 1.-Organizar Viaje \n 2.-Obtener Resumen y Costos \n 3.-Eliminar Item \n 4.-Salir' 
-const mensajeOrganizacion = 'Ingresa una opción \n 1.-Ingresar Transporte \n 2.-Ingresar Hospedaje \n 3.-Ingresar restaurant \n 4.-Volver al Menú Principal'
-const mensajeEliminacion = 'Ingresa una opción \n 1.-Eliminar un Transporte \n 2.-Eliminar un Hospedaje \n 3.-Eliminar un Resturant \n 4.-Salir' 
-//let opcionPrincipal = parseInt(prompt(mensajePrincipal))
-
-
 //Clase Trasporte
 class Trasporte {
 
@@ -333,7 +326,7 @@ const resumenCostos = () =>{
         tablaTrasnporte.classList.add('results-table')
         let thead = document.createElement('thead')
         let headerRow = document.createElement('tr')
-        let headers = ['Id', 'Transporte', 'Agencia', 'Fecha Ida', 'Origen', 'Destino', 'Horario', 'Valor', 'Eliminar']
+        let headers = ['Transporte', 'Agencia', 'Fecha Ida', 'Origen', 'Destino', 'Horario', 'Valor', 'Eliminar']
         headers.forEach(headerText => {
             let th = document.createElement('th')
             th.textContent = headerText
@@ -353,9 +346,9 @@ const resumenCostos = () =>{
 
             valorTransporte = valorTransporte + parseFloat(trasporte.valor)
             //genera las celdas y las agrega a la fila
-            let cellId = document.createElement('td')
+            /*let cellId = document.createElement('td')
             cellId.textContent = parseInt(trasporte.id)
-            row.appendChild(cellId)
+            row.appendChild(cellId)*/
             let cellTipo = document.createElement('td')
             cellTipo.textContent = trasporte.tipo
             row.appendChild(cellTipo)
@@ -421,7 +414,7 @@ const resumenCostos = () =>{
         tablaHospedaje.classList.add('results-table')
         let theadHosp = document.createElement('thead')
         let headerRowHosp = document.createElement('tr')
-        let headersHosp = ['Id', 'Tipo', 'Nombre', 'Dirección', 'Ciudad', 'Entrada', 'Salida', 'Valor', 'Eliminar']
+        let headersHosp = ['Tipo', 'Nombre', 'Dirección', 'Ciudad', 'Entrada', 'Salida', 'Valor', 'Eliminar']
         headersHosp.forEach(headerText => {
             let th = document.createElement('th')
             th.textContent = headerText
@@ -441,9 +434,9 @@ const resumenCostos = () =>{
 
             valorHospedaje = valorHospedaje + parseFloat(hospedaje.valor)
             //genera las celdas y las agrega a la fila
-            let cellId = document.createElement('td')
+           /* let cellId = document.createElement('td')
             cellId.textContent = parseInt(hospedaje.id)
-            row.appendChild(cellId)
+            row.appendChild(cellId)*/
             let cellTipo = document.createElement('td')
             cellTipo.textContent = hospedaje.tipo 
             row.appendChild(cellTipo)
@@ -512,7 +505,7 @@ const resumenCostos = () =>{
         tablaRestaurant.classList.add('results-table')
         let theadRest = document.createElement('thead')
         let headerRowRest = document.createElement('tr')
-        let headersRest = ['Id', 'Nombre', 'Fecha', 'Dirección', 'Ciudad', 'Valor', 'Eliminar']
+        let headersRest = ['Nombre', 'Fecha', 'Dirección', 'Ciudad', 'Valor', 'Eliminar']
         headersRest.forEach(headerText => {
             let th = document.createElement('th')
             th.textContent = headerText
@@ -531,9 +524,9 @@ const resumenCostos = () =>{
 
             valorRestaurants = valorRestaurants + parseFloat(restaurant.valor)
             //genera las celdas y las agrega a la fila
-            let cellId = document.createElement('td')
+          /*  let cellId = document.createElement('td')
             cellId.textContent = parseInt(restaurant.id)
-            row.appendChild(cellId)
+            row.appendChild(cellId)*/
             let cellNombre = document.createElement('td')
             cellNombre.textContent = restaurant.nombre
             row.appendChild(cellNombre)
@@ -685,6 +678,7 @@ const botonPrincipal = document.getElementById("btnPrincipal")
 botonPrincipal.onclick = () => {
     //oculta el boton principal
     botonPrincipal.style.display= "none"
+    document.getElementById("textoBienvenida").style.display= "none"
     //obtiene listas del localStorage
     let existListaTransporte = localStorage.getItem("listaTransporte")
     let existListaHospedaje = localStorage.getItem("listaHospedaje")
@@ -927,7 +921,7 @@ transporteSubmit.onclick = () => {
        document.getElementById('trans-destino').value == '' ||
        document.getElementById('trans-horario').value == '' ){
 
-        console.log('no se lleno todos los campos')
+        mensajeFormVacio()
 
     }else{
         agregaTransporte()
@@ -952,7 +946,7 @@ hospedajeSubmit.onclick = () => {
        document.getElementById('hosp-direccion').value == '' ||
        document.getElementById('hosp-ciudad').value == '' ){
 
-        console.log('no se lleno todos los campos')
+        mensajeFormVacio()
 
     }else{
 
@@ -1434,7 +1428,7 @@ const resumenCostosCiudad = (ciudad) =>{
         tablaTrasnporte.classList.add('results-table-ciudad')
         let thead = document.createElement('thead')
         let headerRow = document.createElement('tr')
-        let headers = ['Id', 'Transporte', 'Agencia', 'Valor', 'Fecha Ida', 'Origen', 'Destino', 'Horario', 'Eliminar']
+        let headers = ['Transporte', 'Agencia', 'Valor', 'Fecha Ida', 'Origen', 'Destino', 'Horario', 'Eliminar']
         headers.forEach(headerText => {
             let th = document.createElement('th')
             th.textContent = headerText
@@ -1453,9 +1447,9 @@ const resumenCostosCiudad = (ciudad) =>{
 
             valorTransporte = valorTransporte + parseFloat(trasporte.valor)
             //genera las celdas y las agrega a la fila
-            let cellId = document.createElement('td')
+          /*  let cellId = document.createElement('td')
             cellId.textContent = parseInt(trasporte.id)
-            row.appendChild(cellId)
+            row.appendChild(cellId)*/
             let cellTipo = document.createElement('td')
             cellTipo.textContent = trasporte.tipo
             row.appendChild(cellTipo)
@@ -1516,7 +1510,7 @@ const resumenCostosCiudad = (ciudad) =>{
         tablaHospedaje.classList.add('results-table-ciudad')
         let theadHosp = document.createElement('thead')
         let headerRowHosp = document.createElement('tr')
-        let headersHosp = ['Id', 'Tipo', 'Nombre', 'Dirección', 'Ciudad', 'Entrada', 'Salida', 'Valor', 'Eliminar']
+        let headersHosp = ['Tipo', 'Nombre', 'Dirección', 'Ciudad', 'Entrada', 'Salida', 'Valor', 'Eliminar']
         headersHosp.forEach(headerText => {
             let th = document.createElement('th')
             th.textContent = headerText
@@ -1536,9 +1530,9 @@ const resumenCostosCiudad = (ciudad) =>{
 
             valorHospedaje = valorHospedaje + parseFloat(hospedaje.valor)
             //genera las celdas y las agrega a la fila
-            let cellId = document.createElement('td')
+          /*  let cellId = document.createElement('td')
             cellId.textContent = parseInt(hospedaje.id)
-            row.appendChild(cellId)
+            row.appendChild(cellId)*/
             let cellTipo = document.createElement('td')
             cellTipo.textContent = hospedaje.tipo 
             row.appendChild(cellTipo)
@@ -1604,7 +1598,7 @@ const resumenCostosCiudad = (ciudad) =>{
         tablaRestaurant.classList.add('results-table-ciudad')
         let theadRest = document.createElement('thead')
         let headerRowRest = document.createElement('tr')
-        let headersRest = ['Id', 'Nombre', 'Fecha', 'Dirección', 'Ciudad', 'Valor', 'Eliminar']
+        let headersRest = ['Nombre', 'Fecha', 'Dirección', 'Ciudad', 'Valor', 'Eliminar']
         headersRest.forEach(headerText => {
             let th = document.createElement('th')
             th.textContent = headerText
@@ -1623,9 +1617,9 @@ const resumenCostosCiudad = (ciudad) =>{
 
             valorRestaurants = valorRestaurants + parseFloat(restaurant.valor)
             //genera las celdas y las agrega a la fila
-            let cellId = document.createElement('td')
+          /*  let cellId = document.createElement('td')
             cellId.textContent = parseInt(restaurant.id)
-            row.appendChild(cellId)
+            row.appendChild(cellId)*/
             let cellNombre = document.createElement('td')
             cellNombre.textContent = restaurant.nombre
             row.appendChild(cellNombre)
@@ -1663,31 +1657,7 @@ const resumenCostosCiudad = (ciudad) =>{
 
 
     valorTotal = valorTransporte + valorHospedaje + valorRestaurants
-//crea el valor total del viaje y lo agrega sobre todas las tablas
- /*   if(!document.getElementById("valorTotal")){
-        let textContainer = document.createElement("div")
-        textContainer.id = "valorTotal"
-        textContainer.className = "top-text-container"
 
-        let labelElement = document.createElement("span")
-        labelElement.textContent = "Valor Actual del viaje: "
-        labelElement.className = "label-text"
-
-        let textElement = document.createElement("span")
-        textElement.id= "valorTotalText"
-        textElement.textContent = valorTotal
-        textElement.className = "value-text"
-
-        textContainer.appendChild(labelElement)
-        textContainer.appendChild(textElement)
-
-        let container = document.getElementById("contendorForm")
-        container.insertBefore(textContainer, container.firstChild)
-    }else{
-        document.getElementById("valorTotalText").textContent= valorTotal
-    }
-*/
-    //para filtrar para nueva tabla usar esto
 
 
 }
