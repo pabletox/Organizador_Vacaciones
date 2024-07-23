@@ -5,9 +5,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primera Entrega Pablo Vega Ramos</title>
     <script defer src="./js/script.js"></script>
+    <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
-    <h1>Primera entrega Pablo Vega Ramos</h1>
+   <!-- <h1>Primera entrega Pablo Vega Ramos</h1>
     <h2>Bienvenidos al organizador de viajes</h2>
     <h3>
         <p>
@@ -22,5 +23,96 @@
             que realizara en su viaje permitiendole una mejor presupuestación.
         </p>
     </h3>
+    -->
+    <div id="contenedorPrincipal" class="containerPrincipal">
+        <div id="contenedorBotones" class="button-group">
+            <button id="btnPrincipal" class="start-button">¿Listo para comenzar a organizar tu viaje?</button>
+            <button id="btnTransporte" class="option-button">Ingresar Transporte</button>
+            <button id="btnHospedaje" class="option-button">Ingresar Hospedaje</button>
+            <button id="btnRestaurant" class="option-button">Ingresar Restaurant</button>
+            <button id="btnResumen" class="option-button">Ver/Ocultar Detalle</button>
+            <button id="btnResumenCiudad" class="option-button">Ver/Ocultar Resumen por ciudad</button>
+        </div>
+
+        <div id="contendorForm" class="content">
+            <form id="formTransporte" class="form-group">
+                <label for="trans-tipo">Transporte:</label>
+                <select id="trans-tipo" name="trans-tipo" class="input-field">
+                    <option value="1">Avión</option>
+                    <option value="2">Tren</option>
+                    <option value="3">Barco</option>
+                    <option value="4">Automóvil</option>
+                    <option value="5">Otro</option>
+                </select>
+                <label id="trans-lab-agencia" for="trans-agencia">Nombre de agencia:</label>
+                <input type="text" id="trans-agencia" name="trans-agencia" class="input-field">
+                <label id="trans-lab-valor" for="trans-valor">Valor:</label>
+                <input type="number" id="trans-valor" name="trans-valor" class="input-field">
+                <label id="trans-label-fecha" for="trans-fecha-ida">Fecha de ida:</label>
+                <input type="date" id="trans-fecha-ida" name="trans-fecha-ida" class="input-field">
+                <label for="trans-origen">Origen:</label>
+                <input type="text" id="trans-origen" name="trans-origen" class="input-field">
+                <label for="trans-destino">Destino:</label>
+                <input type="text" id="trans-destino" name="trans-destino" class="input-field">
+                <label for="trans-horario">Horario:</label>
+                <input type="time" id="trans-horario" name="trans-horario" class="input-field">
+                <div class="button-group-form">
+                    <button id="trans-enviar" type="button" class="submit-button">Enviar</button>
+                    <button id="trans-ocultar" type="button" class="hide-button">Ocultar</button>
+                </div>
+            </form>
+
+
+            <form id="formHospedaje" class="form-group">
+                <label for="hosp-tipo">Hospedaje:</label>
+                <select id="hosp-tipo" name="hosp-tipo" class="input-field">
+                    <option value="1">Hotel</option>
+                    <option value="2">Hostal</option>
+                    <option value="3">Otro</option>
+                </select>
+                <label for="hosp-nombre">Nombre del hospedaje:</label>
+                <input type="text" id="hosp-nombre" name="hosp-nombre" class="input-field">
+                <label id="hosp-label-entrada" for="hosp-entrada">Entrada:</label>
+                <input type="date" id="hosp-entrada" name="hosp-entrada" class="input-field">
+                <label id="hosp-label-salida"for="hosp-salida">Salida:</label>
+                <input type="date" id="hosp-salida" name="hosp-salida" class="input-field">
+                <label id ="hosp-lab-valor" for="hosp-valor">Valor:</label>
+                <input type="number" id="hosp-valor" name="hosp-valor" class="input-field">
+                <label for="hosp-direccion">Dirección:</label>
+                <input type="text" id="hosp-direccion" name="hosp-direccion" class="input-field">
+                <label for="hosp-ciudad">Ciudad:</label>
+                <input type="text" id="hosp-ciudad" name="hosp-ciudad" class="input-field">
+                <div class="button-group-form">
+                    <button id="hosp-enviar" type="button" class="submit-button">Enviar</button>
+                    <button id="hosp-ocultar" type="button" class="hide-button">Ocultar</button>
+                </div>
+            </form>
+
+
+
+            <form id="formRestaurant" class="form-group">
+                <label for="rest-nombre">Nombre:</label>
+                <input type="text" id="rest-nombre" name="rest-nombre" class="input-field">
+                <label id="rest-label-fecha" for="rest-fecha-reserva">Fecha Reserva:</label>
+                <input type="date" id="rest-fecha-reserva" name="rest-fecha-reserva" class="input-field">
+                <label for="rest-direccion">Dirección del restaurant:</label>
+                <input type="text" id="rest-direccion" name="rest-direccion" class="input-field">
+                <label id ="rest-lab-valor" for="rest-valor-aprox">Valor aprox:</label>
+                <input type="number" id="rest-valor-aprox" name="rest-valor-aprox" class="input-field">
+                <label for="rest-ciudad">Ciudad:</label>
+                <input type="text" id="rest-ciudad" name="ciudad" class="input-field">
+                <div class="button-group-form">
+                    <button id="rest-enviar" type="button" class="submit-button">Enviar</button>
+                    <button id="rest-ocultar" type="button" class="hide-button">Ocultar</button>
+                </div>
+            </form>
+        </div>
+
+
+    </div>
+
+    
+
+
 </body>
 </html>

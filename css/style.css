@@ -1,0 +1,516 @@
+body, html {
+    margin: 0;
+    padding: 0;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-family: Arial, sans-serif;
+    background-color: #f0f0f0;
+}
+
+.containerPrincipal {
+    text-align: center;
+    height: 100%;
+}
+
+.content {
+    padding-top: 10px;
+    margin-top: 10px;
+    
+}
+.start-button {
+    font-size: 24px;
+    padding: 20px 40px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.start-button:hover {
+    background-color: #0056b3;
+}
+
+.button-group {
+    margin-bottom: 20px;
+    position: sticky; /* Mantener los botones en su lugar */
+    top: 0;  
+    /*background-color: #fff;*/
+    z-index: 1;
+    padding-top: 10px;
+    /*height: 120px;*/
+}
+
+.option-button {
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    display:none;
+  
+}
+
+.option-button:hover {
+    background-color: #0056b3;
+}
+
+
+
+/*css de formularios*/
+
+
+.form-group {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    display:none;
+}
+
+.label, .input-field {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    margin: 0 auto;
+    text-align: left;
+}
+
+.input-field {
+    padding: 10px;
+    font-size: 16px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+    margin-bottom: 15px;
+}
+
+.input-field:focus {
+    outline: none;
+    border-color: #007bff;
+    box-shadow: 0 0 5px #007bff;
+}
+
+.submit-button, .hide-button {
+    font-size: 18px;
+    padding: 10px 20px;
+    margin-top: 10px;
+    background-color: #28a745;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.submit-button:hover {
+    background-color: #218838;
+}
+
+.hide-button {
+    background-color: #dc3545;
+    color: white;
+}
+
+.hide-button:hover {
+    background-color: #c82333;
+}
+
+
+.results-table {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.results-table th, .results-table td {
+    padding: 7px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.results-table th {
+    background-color: #007bff;
+    color: white;
+}
+
+.results-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+.results-table-ciudad {
+    width: 100%;
+    max-width: 800px;
+    margin: 20px auto;
+    border-collapse: collapse;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    background-color: #fff;
+}
+
+.results-table-ciudad th, .results-table-ciudad td {
+    padding: 7px;
+    border: 1px solid #ccc;
+    text-align: left;
+}
+
+.results-table-ciudad th {
+    background-color: #007bff;
+    color: white;
+}
+
+.results-table-ciudad tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+
+
+.top-text-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+    font-size: 24px;
+    font-weight: bold;
+}
+
+/* Estilos para el label y el texto */
+.label-text {
+    margin-right: 5px;
+}
+
+.value-text {
+    color: #007bff;
+}
+
+
+/* Estilos para el contenedor del valor total por arreglo */
+.total-value-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.total-label-text {
+    margin-right: 5px;
+}
+
+.total-value-text {
+    color: #007bff;
+}
+
+.modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modal-content {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.modal-buttons {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+/* CSS de boton de conservar listas*/
+/* Modal styles */
+.modal-conservarlista {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modal-content-conservarlista {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.modal-buttons-conservarlista {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.hidden-conservarlista {
+    display: flex;
+}
+
+/* Botón estilos */
+.option-button-conservarlista {
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option-button-conservarlista:hover {
+    background-color: #0056b3;
+}
+
+.hide-button-conservarlista {
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hide-button-conservarlista:hover {
+    background-color: #cc0000;
+}
+
+
+.btn-eliminar {
+    font-size: 15px;
+    padding: 5px 5px;
+    margin: 5px;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-eliminar:hover {
+    background-color: #cc0000;
+}
+
+
+
+/* Botón estilos resumen ciudad*/
+.modal-SelectCiudad {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modal-content-SelectCiudad {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.modal-buttons-SelectCiudad {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.hidden-SelectCiudad {
+    display: flex;
+}
+
+.option-button-SelectCiudad {
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option-button-SelectCiudad:hover {
+    background-color: #0056b3;
+}
+
+.hide-button-SelectCiudad {
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hide-button-SelectCiudad:hover {
+    background-color: #cc0000;
+}
+
+
+.btn-SelectCiudad {
+    font-size: 15px;
+    padding: 5px 5px;
+    margin: 5px;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.btn-SelectCiudad:hover {
+    background-color: #cc0000;
+}
+
+.custom-select {
+    display: block;
+    width: 200px;
+    padding: 10px;
+    margin: 10px 0;
+    font-size: 16px;
+    font-family: Arial, sans-serif;
+    border: 2px solid #4CAF50; /* Verde similar al de los botones */
+    border-radius: 4px;
+    background-color: #f9f9f9;
+    color: #333;
+    margin: 20px;
+    padding: 10px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    background-color: #fff;
+}
+
+.total-value-container-ciudad {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+    font-size: 20px;
+    font-weight: bold;
+}
+
+.total-label-text-ciudad  {
+    margin-right: 5px;
+}
+
+.total-value-text-ciudad  {
+    color: #007bff;
+}
+
+
+
+
+/* CSS de boton de conservar listas*/
+/* Modal styles */
+.modal-FormVacio {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 20;
+}
+
+.modal-content-FormVacio {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+}
+
+.modal-buttons-FormVacio {
+    margin-top: 20px;
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+}
+
+.hidden-FormVacio {
+    display: flex;
+}
+
+/* Botón estilos */
+.option-button-FormVacio {
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #007bff;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.option-button-FormVacio:hover {
+    background-color: #0056b3;
+}
+
+.hide-button-FormVacio {
+    font-size: 20px;
+    padding: 15px 30px;
+    margin: 10px;
+    background-color: #ff6666;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.hide-button-FormVacio:hover {
+    background-color: #cc0000;
+}
