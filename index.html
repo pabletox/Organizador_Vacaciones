@@ -4,7 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Primera Entrega Pablo Vega Ramos</title>
-    <script defer src="./js/script.js"></script>
+    <script defer src="./js/script.js" ></script>
+    <script defer src="./js/eventos.js"></script>
+    <script defer src="./js/validaciones.js"></script>
     <link rel="stylesheet" href="./css/style.css">
 </head>
 <body>
@@ -34,17 +36,13 @@
             <button id="btnRestaurant" class="option-button">Ingresar Restaurant</button>
             <button id="btnResumen" class="option-button">Ver/Ocultar Detalle</button>
             <button id="btnResumenCiudad" class="option-button">Ver/Ocultar Resumen por ciudad</button>
+            <button id="btnCalendario" class="option-button">Ver en Calendario</button>
         </div>
 
         <div id="contendorForm" class="content">
             <form id="formTransporte" class="form-group">
                 <label for="trans-tipo">Transporte:</label>
                 <select id="trans-tipo" name="trans-tipo" class="input-field">
-                    <option value="1">Avión</option>
-                    <option value="2">Tren</option>
-                    <option value="3">Barco</option>
-                    <option value="4">Automóvil</option>
-                    <option value="5">Otro</option>
                 </select>
                 <label id="trans-lab-agencia" for="trans-agencia">Nombre de agencia:</label>
                 <input type="text" id="trans-agencia" name="trans-agencia" class="input-field">
@@ -68,9 +66,6 @@
             <form id="formHospedaje" class="form-group">
                 <label for="hosp-tipo">Hospedaje:</label>
                 <select id="hosp-tipo" name="hosp-tipo" class="input-field">
-                    <option value="1">Hotel</option>
-                    <option value="2">Hostal</option>
-                    <option value="3">Otro</option>
                 </select>
                 <label for="hosp-nombre">Nombre del hospedaje:</label>
                 <input type="text" id="hosp-nombre" name="hosp-nombre" class="input-field">
@@ -97,6 +92,8 @@
                 <input type="text" id="rest-nombre" name="rest-nombre" class="input-field">
                 <label id="rest-label-fecha" for="rest-fecha-reserva">Fecha Reserva:</label>
                 <input type="date" id="rest-fecha-reserva" name="rest-fecha-reserva" class="input-field">
+                <label for="rest-horario">Horario:</label>
+                <input type="time" id="rest-horario" name="rest-horario" class="input-field">
                 <label for="rest-direccion">Dirección del restaurant:</label>
                 <input type="text" id="rest-direccion" name="rest-direccion" class="input-field">
                 <label id ="rest-lab-valor" for="rest-valor-aprox">Valor aprox:</label>
@@ -111,9 +108,15 @@
         </div>
 
 
+
+
     </div>
 
-    
+
+    <!-- SweetAlert -->
+     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script> 
+    <!-- calendario-->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
 
 
 </body>

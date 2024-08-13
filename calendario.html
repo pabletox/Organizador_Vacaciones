@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Generacion de calendario</title>
+    <script defer src="./js/script.js"></script>
+    <script defer src="./js/calendario.js"></script>
+    <link rel="stylesheet" href="./css/calendar.css">
+</head>
+<body>
+    <div id="calendario" class="calendario-container">
+    </div>
+    <div><button id="btnIcs" class="option-button-export">Exportar a .ics</button></div>
+    <!-- calendario-->
+    <script src='https://cdn.jsdelivr.net/npm/fullcalendar@6.1.15/index.global.min.js'></script>
+    <!-- exportacion de calendario en .ics-->
+     <!--esta libreria tiene una funcion que ocupa la libreria ics se llama SaveAS-->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+    <!-- Para esta libreria se descargo la libreria, ya que segun el desarrollador las formas de usarlas
+     son instalando por npm (lo cual no es parte del trabajo) o descargarla desde github lo cual hice-->
+    <script src="./js/ics.js"></script>
+    
+</body>
+</html>

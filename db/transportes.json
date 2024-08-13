@@ -1,0 +1,22 @@
+[
+    {
+        "id": 1, 
+        "nombre": "Avión"
+    },
+    {
+        "id": 2, 
+        "nombre": "Tren"
+    },
+    {
+        "id": 3, 
+        "nombre": "Barco"
+    },
+    {
+        "id": 4, 
+        "nombre": "Automóvil"
+    },
+    {
+        "id": 5, 
+        "nombre": "Otro"
+    }
+]

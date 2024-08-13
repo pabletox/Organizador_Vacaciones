@@ -1,0 +1,14 @@
+[
+    {
+        "id": 1, 
+        "nombre": "Hotel"
+    },
+    {
+        "id": 2, 
+        "nombre": "Hostal"
+    },
+    {
+        "id": 3, 
+        "nombre": "Otro"
+    }
+]
