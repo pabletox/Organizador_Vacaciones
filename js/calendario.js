@@ -92,11 +92,18 @@ const creaListaCalendario = () => {
 
 
 const creaCalendario = () =>{
-   // creaListaCalendario()
+   
+    let hoy = new Date();
+    let año = hoy.getFullYear();
+    let mes = String(hoy.getMonth() + 1).padStart(2, '0'); // Los meses empiezan en 0, por eso se suma 1
+    let día = String(hoy.getDate()).padStart(2, '0');
+    
+    let fechaHoy = `${año}-${mes}-${día}`;
+
     const calendarEl = document.getElementById('calendario');
     const calendar = new FullCalendar.Calendar(calendarEl, {
       initialView: 'dayGridMonth',
-      initialDate: '2024-08-08',
+      initialDate: fechaHoy,
       headerToolbar: {
         left: 'prev,next today',
         center: 'title',
