@@ -14,19 +14,27 @@
     
     -->
     <div id="contenedorPrincipal" class="containerPrincipal">
-        <div id="contenedorBotones" class="button-group">
+        <div id="contenedorBotones" class="button-group">   
             
-            <span id="textoBienvenida">
-                <h2>Bienvenidos al organizador de viajes</h2>
+            
+            <span id="textoBienvenida" class="textoBienvenida">
+                <h2 class="bienvenidos">Bienvenidos al organizador de viajes</h2>
                 <h3>
                     <p>
-                        La idea principal de esta pequeña página es permitirte organizar tu viaje <br> 
-                        permitiendo al usuario ingresar sus transportes, hoteles y restaurants.   <br>
-                        La finalidad es poder generar un resumen en forma de calendario para que el usuario <br>
-                        lo descargue en pdf o una planilla excel <br><br>
-                        En esta segunda etapa la página te permite ingresar y eliminar ítems de forma visual <br>
-                        y obtener un resuemen general que se muestra en forma de tablas, ademas de obtener resumenes <br>
-                        filtrados por ciudad y asi ir conociendo cuanto es el monto que estaras gastando.<br>
+                        La idea principal de esta pequeña página es permitir organizar tu viaje permitiendo al usuario ingresar sus transportes, hoteles y restaurants.  <br>
+                        La finalidad es poder generar un resumen en forma de calendario para que el usuario descarge un archivo .ics que puedas agregar en su calendario <br><br>
+                        En la etapa final se ha agregado a lo ya entregado en las ultimas dos entregas lo siguiente: <br>
+                        <ul>
+                            <li>Se separaron los archivos JS en distintas hojas referenciales a los eventos, validaciones, calendario, librerias, etc.</li>
+                            <li>Se quitaron todo tipo de promp o console log que existieran para mayor proligidad.</li>
+                            <li>Se genero el circuito completo del cliente en la pagina el cual comienza con el ingreso de evento, visualizacion, eliminación y finalmente con la <br> exportacion de  un archivo .ics para ser importado en tu calendario.</li>
+                            <li>Se agrego uso de libreria SweetAlert y fullcalendar.</li>
+                            <li>Se agregaron try catch en diversos lugares para prevenir errores.</li>
+                        </ul><br>
+                        Se penso en agregar un pequeño login, sin embargo no fue necesario ya que el fin del simulador es que sea una pagina de paso sencilla. sin embargo <br>
+                        es probable que cuando le haga mejoras a futuras le genere un login pero ya conectado a un ldap o algun sistema de autentificación y DB.<br><br>
+                        Como Nota final si desean importar el archivo .ics como prueba en sus calendarios no olviden borrar estos eventos de sus calendarios al finalizar.
+
                     </p>
                 </h3>
             </span>

@@ -944,83 +944,99 @@ const limpiarCampos = (tipoItem) => {
 //ventana para preguntar si se quiere conservar la información ingresada o se quiere limpiar al recargar pagina
 const conservarListas = () => {
 
-    // Crear el div para el modal
-    let botonConservaLista = document.createElement('div')
-    botonConservaLista.id = 'divConservaLista'
-    botonConservaLista.className = 'modal-conservarlista hidden-conservarlista'
+    console.log(localStorage.getItem("listaTransporte"))
+    console.log(localStorage.getItem("listaHospedaje"))
+    console.log(localStorage.getItem("listaRestaurant"))
 
-    // Crear el div para el contenido del modal
-    let conservaListaContent = document.createElement('div')
-    conservaListaContent.className = 'modal-content-conservarlista'
 
-    // Crear el párrafo con el mensaje
-    let message = document.createElement('p')
-    message.textContent = '¿Desea conservar los datos ingresados Anteriormente?'
 
-    // Crear el contenedor para los botones
-    let conservaListaButtons = document.createElement('div')
-    conservaListaButtons.className = 'modal-buttons-conservarlista'
+    if (((localStorage.getItem("listaTransporte") !=null) && (localStorage.getItem("listaTransporte") !="[]")) ||
+        ((localStorage.getItem("listaHospedaje") !=null) &&  (localStorage.getItem("listaHospedaje") !="[]")) ||
+        ((localStorage.getItem("listaRestaurant") !=null) && (localStorage.getItem("listaRestaurant") !="[]")) ){
 
-    // Crear el botón de "Sí"
-    let yesButton = document.createElement('button')
-    yesButton.id = 'yes-button'
-    yesButton.className = 'option-button-conservarlista'
-    yesButton.textContent = 'Sí'
+        // Crear el div para el modal
+        let botonConservaLista = document.createElement('div')
+        botonConservaLista.id = 'divConservaLista'
+        botonConservaLista.className = 'modal-conservarlista hidden-conservarlista'
 
-    // Crear el botón de "No"
-    let noButton = document.createElement('button')
-    noButton.id = 'no-button'
-    noButton.className = 'hide-button-conservarlista'
-    noButton.textContent = 'No'
+        // Crear el div para el contenido del modal
+        let conservaListaContent = document.createElement('div')
+        conservaListaContent.className = 'modal-content-conservarlista'
 
-    // Añadir los botones al contenedor de botones
-    conservaListaButtons.appendChild(yesButton);
-    conservaListaButtons.appendChild(noButton);
+        // Crear el párrafo con el mensaje
+        let message = document.createElement('p')
+        message.textContent = '¿Desea conservar los datos ingresados Anteriormente?'
 
-    // Añadir el mensaje y el contenedor de botones al contenido del modal
-    conservaListaContent.appendChild(message);
-    conservaListaContent.appendChild(conservaListaButtons);
+        // Crear el contenedor para los botones
+        let conservaListaButtons = document.createElement('div')
+        conservaListaButtons.className = 'modal-buttons-conservarlista'
 
-    // Añadir el contenido del modal al modal
-    botonConservaLista.appendChild(conservaListaContent);
+        // Crear el botón de "Sí"
+        let yesButton = document.createElement('button')
+        yesButton.id = 'yes-button'
+        yesButton.className = 'option-button-conservarlista'
+        yesButton.textContent = 'Sí'
 
-    // Añadir el modal al cuerpo del documento
-    document.body.appendChild(botonConservaLista);
+        // Crear el botón de "No"
+        let noButton = document.createElement('button')
+        noButton.id = 'no-button'
+        noButton.className = 'hide-button-conservarlista'
+        noButton.textContent = 'No'
 
-  //accion si se apreta boton de si
-    const conservarListaSi = document.getElementById('yes-button')
+        // Añadir los botones al contenedor de botones
+        conservaListaButtons.appendChild(yesButton);
+        conservaListaButtons.appendChild(noButton);
 
-    conservarListaSi.onclick = () =>{
-        //si se elige conservar informacion anterior carga listas del localStorage, oculta ventana de mantener info y muestra botones
-        if (localStorage.getItem("listaTransporte") !=null){
-            listaTransporte.recuperaLocalStorage("transporte")
+        // Añadir el mensaje y el contenedor de botones al contenido del modal
+        conservaListaContent.appendChild(message);
+        conservaListaContent.appendChild(conservaListaButtons);
+
+        // Añadir el contenido del modal al modal
+        botonConservaLista.appendChild(conservaListaContent);
+
+        // Añadir el modal al cuerpo del documento
+        document.body.appendChild(botonConservaLista);
+
+    //accion si se apreta boton de si
+        const conservarListaSi = document.getElementById('yes-button')
+
+        conservarListaSi.onclick = () =>{
+            //si se elige conservar informacion anterior carga listas del localStorage, oculta ventana de mantener info y muestra botones
+            if (localStorage.getItem("listaTransporte") !=null){
+                listaTransporte.recuperaLocalStorage("transporte")
+            }
+            if (localStorage.getItem("listaHospedaje") !=null){
+                listaHospedaje.recuperaLocalStorage("hospedaje")
+            }
+            if (localStorage.getItem("listaRestaurant") !=null){
+                listaRestaurant.recuperaLocalStorage("restaurant")
+            }
+            document.getElementById('divConservaLista').style.display='none'
+            let listaBotones = document.getElementsByClassName('option-button')
+            for (const boton of listaBotones){
+                boton.style.display='inline'
+            }
+            //carga tablas resumen de Costos
+            resumenCostos()
         }
-        if (localStorage.getItem("listaHospedaje") !=null){
-            listaHospedaje.recuperaLocalStorage("hospedaje")
+
+        //accion si se apreta boton de no
+        const conservarListaNo = document.getElementById('no-button')
+        conservarListaNo.onclick = () =>{
+            //si se preciona no limpia el localStorage, oculta ventana de mantener info y muestra botones
+            localStorage.clear() 
+            document.getElementById('divConservaLista').style.display='none'
+            let listaBotones = document.getElementsByClassName('option-button')
+            for (const boton of listaBotones){
+                boton.style.display='inline'
+            }
+
         }
-        if (localStorage.getItem("listaRestaurant") !=null){
-            listaRestaurant.recuperaLocalStorage("restaurant")
-        }
-        document.getElementById('divConservaLista').style.display='none'
+    }else{
         let listaBotones = document.getElementsByClassName('option-button')
         for (const boton of listaBotones){
             boton.style.display='inline'
         }
-        //carga tablas resumen de Costos
-        resumenCostos()
-    }
-
-    //accion si se apreta boton de no
-    const conservarListaNo = document.getElementById('no-button')
-    conservarListaNo.onclick = () =>{
-        //si se preciona no limpia el localStorage, oculta ventana de mantener info y muestra botones
-        localStorage.clear() 
-        document.getElementById('divConservaLista').style.display='none'
-        let listaBotones = document.getElementsByClassName('option-button')
-        for (const boton of listaBotones){
-            boton.style.display='inline'
-        }
-
     }
 
 }
